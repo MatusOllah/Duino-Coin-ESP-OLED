@@ -124,13 +124,13 @@ public:
 
                 submit(counter, hashrate, elapsed_time_s);
 
-                #if defined(USE_SSD1306)
-                    updateDisplay();
-                #endif
-
                 break;
             }
         }
+
+        #if defined(USE_SSD1306)
+            updateDisplay();
+        #endif
     }
 
 private:
