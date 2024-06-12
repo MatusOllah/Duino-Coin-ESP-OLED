@@ -12,6 +12,7 @@
 #include "DSHA1.h"
 #include "Counter.h"
 #include "Settings.h"
+#include "Display.h"
 
 // https://github.com/esp8266/Arduino/blob/master/cores/esp8266/TypeConversion.cpp
 const char base36Chars[36] PROGMEM = {
