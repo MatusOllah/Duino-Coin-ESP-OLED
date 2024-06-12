@@ -432,6 +432,12 @@ void setup() {
       display.display();
       delay(500);
       display.clearDisplay();
+
+      display.setTextSize(2);
+      display.setTextColor(SSD1306_WHITE);
+      display.setCursor(0,0);
+      display.println("Initializing...");
+      display.display();
     #endif
 
     SetupWifi();
