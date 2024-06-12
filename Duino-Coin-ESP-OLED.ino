@@ -34,7 +34,6 @@
     #include <ESP8266WebServer.h>
 #else
     #include <ESPmDNS.h>
-    #include <WiFiClientSecure.h>
     #include <WiFi.h>
     #include <HTTPClient.h>
     #include <WebServer.h>
