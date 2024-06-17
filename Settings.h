@@ -28,8 +28,11 @@ extern const char PASSWORD[] = "PASSW0RD";
 // Comment out the line below if you wish to disable Serial printing
 #define SERIAL_PRINTING
 
-// Comment out the line below if you wish to disable SSD1306 OLED display
+// Comment out the lines below if you wish to disable SSD1306 OLED display
 #define USE_SSD1306
+// select the size of display, USE_DISPLAY_128x64 OR USE_DISPLAY_128x32
+#define USE_DISPLAY_128x64
+//#define USE_DISPLAY_128x32
 
 // -------------------------------------------------------------- //
 
@@ -39,7 +42,7 @@ extern const char PASSWORD[] = "PASSW0RD";
 // Uncomment the line below if you wish to use the internal temperature sensor (Duino IoT example)
 // Only ESP32-S2, -S3, -H2, -C2, -C3, -C6 and some old models have one!
 // More info: https://www.espboards.dev/blog/esp32-inbuilt-temperature-sensor/
-// NOTE: Mining performance will decrease by about 20 kH/s!
+// NOTE: Mining performance will decrease by about 20 kH/s!32
 // #define USE_INTERNAL_SENSOR
 
 // Uncomment the line below if you wish to use a DS18B20 temperature sensor (Duino IoT example)
@@ -84,9 +87,17 @@ extern String WALLET_ID = "";
   // Change this to your display's reset pin (-1 = disabled)
   #define OLED_RESET -1
 
-  // Change this to your display's resolution
-  #define SCREEN_WIDTH 128
-  #define SCREEN_HEIGHT 64
+  #if defined(USE_DISPLAY_128x64)
+    // Change this to your display's resolution    
+    #define SCREEN_WIDTH 128
+    #define SCREEN_HEIGHT 64
+  #endif
+
+  #if defined(USE_DISPLAY_128x32)
+    // Change this to your display's resolution    
+    #define SCREEN_WIDTH 128
+    #define SCREEN_HEIGHT 32
+  #endif
 
   Adafruit_SSD1306 extern display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #endif
