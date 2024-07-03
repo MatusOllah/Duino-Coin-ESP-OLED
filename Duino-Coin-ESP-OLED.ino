@@ -387,6 +387,22 @@ void setup() {
     WALLET_ID = String(random(0, 2811)); // Needed for miner grouping in the wallet
     job[0] = new MiningJob(0, configuration);
 
+    #if defined(USE_SSD1306)
+      #if defined(SERIAL_PRINTING)
+        Serial.println("Initializing SSD1306 display on I2C address: " + String(SCREEN_ADDRESS));
+      #endif
+      if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) Serial.println("SSD1306 allocation failed");
+      display.display();
+      delay(500);
+      display.clearDisplay();
+
+      display.setTextSize(1);
+      display.setTextColor(SSD1306_WHITE);
+      display.setCursor(0,0);
+      display.println("Initializing...");
+      display.display();
+    #endif
+
     #if defined(USE_DHT)
         #if defined(SERIAL_PRINTING)
           Serial.println("Initializing DHT sensor (Duino IoT)");
@@ -422,22 +438,6 @@ void setup() {
        #if defined(SERIAL_PRINTING)
          Serial.println("Test reading: " + String(result) + "°C");
        #endif
-    #endif
-
-    #if defined(USE_SSD1306)
-      #if defined(SERIAL_PRINTING)
-        Serial.println("Initializing SSD1306 display on I2C address: " + String(SCREEN_ADDRESS));
-      #endif
-      if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) Serial.println("SSD1306 allocation failed");
-      display.display();
-      delay(500);
-      display.clearDisplay();
-
-      display.setTextSize(1);
-      display.setTextColor(SSD1306_WHITE);
-      display.setCursor(0,0);
-      display.println("Initializing...");
-      display.display();
     #endif
 
     SetupWifi();
