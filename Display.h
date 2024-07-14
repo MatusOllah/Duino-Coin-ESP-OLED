@@ -123,7 +123,7 @@ void displayUserBalance(int size = 1) {
 void displayUserMinerCount(int size = 1) {
 	String input = httpGetString("https://server.duinocoin.com/miners/"+String(DUCO_USER));
 
-	DynamicJsonDocument doc(4096); // TODO: <= toto
+	DynamicJsonDocument doc(32768); // TODO: <= toto
     deserializeJson(doc, input);
 	JsonArray result = doc["result"];
     size_t miners = result.size();
