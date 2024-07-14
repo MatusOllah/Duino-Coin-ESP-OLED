@@ -28,3 +28,4 @@ Connect the SSD1306 OLED display to the ESP microcontroller as follows:
 ## Configuration
 
 Edit the `Settings.h` file and change the settings.
+Edit the `Display.h` file to change the display.
