@@ -29,7 +29,7 @@ void updateDisplay() {
 	//displayUsername(1);
 	//displayUserBalance(1);
 	//displayUserMinerCount(1);
-	/////////////////////////
+	/////////////////////////////////////////////////////////////////////
 
 	display.display();
 }
