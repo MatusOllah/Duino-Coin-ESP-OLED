@@ -12,6 +12,19 @@
 
 #include "Settings.h"
 
+void displayFish(int size);
+void displaySpace(int size);
+void displayUsername(int size);
+void displayHashrate(int size);
+void displayDifficulty(int size);
+void displayRigID(int size);
+void displayShareCount(int size);
+void displayNodeID(int size);
+void displayUserBalance(int size);
+void displayUserMinerCount(int size);
+
+String httpGetString(String URL);
+
 void updateDisplay() {
 	display.clearDisplay();
 	display.setCursor(0,0);
@@ -35,19 +48,19 @@ void updateDisplay() {
 }
 
 // Displays fish as requested by @KD BRUHLAG
-void displayFish(int size = 1) {
+void displayFish(int size) {
 	display.setTextSize(size);
 	display.println("><> ><> ><> ><> ><> ><> ><> ><> ><> ><>");
 }
 
 // Displays space
-void displaySpace(int size = 1) {
+void displaySpace(int size) {
 	display.setTextSize(size);
 	display.println("");
 }
 
 // Displays username
-void displayUsername(int size = 1) {
+void displayUsername(int size) {
 	display.setTextSize(size);
 	#if defined(USE_DISPLAY_128x64)
 		display.println("Username: " + String(DUCO_USER));
@@ -59,7 +72,7 @@ void displayUsername(int size = 1) {
 }
 
 // Displays hashrate
-void displayHashrate(int size = 1) {
+void displayHashrate(int size) {
 	display.setTextSize(size);
 	#if defined(USE_DISPLAY_128x64)
 		display.println("Hashrate: " + String(hashrate / 1000) + " kH/s");
@@ -71,7 +84,7 @@ void displayHashrate(int size = 1) {
 }
 
 // Displays difficulty
-void displayDifficulty(int size = 1) {
+void displayDifficulty(int size) {
 	display.setTextSize(size);
 	#if defined(USE_DISPLAY_128x64)
 		display.println("Difficulty: " + String(difficulty / 100));
@@ -83,26 +96,26 @@ void displayDifficulty(int size = 1) {
 }
 
 // Displays rig ID
-void displayRigID(int size = 1) {
+void displayRigID(int size) {
 	display.setTextSize(size);
     display.setTextColor(SSD1306_WHITE);
     display.println(String(RIG_IDENTIFIER));
 }
 
 // Displays share count
-void displayShareCount(int size = 1) {
+void displayShareCount(int size) {
 	display.setTextSize(size);
 	display.println("Shares: " + String(share_count));
 }
 
 // Displays node ID
-void displayNodeID(int size = 1) {
+void displayNodeID(int size) {
 	display.setTextSize(size);
 	display.println("Node: " + String(node_id));
 }
 
 // Displays user balance
-void displayUserBalance(int size = 1) {
+void displayUserBalance(int size) {
 	String input = httpGetString("https://server.duinocoin.com/balances/"+String(DUCO_USER));
 
     DynamicJsonDocument doc(1024);
@@ -120,7 +133,7 @@ void displayUserBalance(int size = 1) {
 }
 
 // Displays user miner count
-void displayUserMinerCount(int size = 1) {
+void displayUserMinerCount(int size) {
 	String input = httpGetString("https://server.duinocoin.com/miners/"+String(DUCO_USER));
 
 	DynamicJsonDocument doc(32768); // TODO: <= toto
